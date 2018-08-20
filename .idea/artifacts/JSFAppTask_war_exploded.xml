@@ -1,0 +1,18 @@
+<component name="ArtifactManager">
+  <artifact type="exploded-war" name="JSFAppTask:war exploded">
+    <output-path>$PROJECT_DIR$/out/artifacts/JSFAppTask_war_exploded</output-path>
+    <root id="root">
+      <element id="javaee-facet-resources" facet="JSFAppTask/web/Web" />
+      <element id="directory" name="WEB-INF">
+        <element id="directory" name="classes">
+          <element id="module-output" name="JSFAppTask" />
+        </element>
+        <element id="directory" name="lib">
+          <element id="library" level="project" name="Maven: jstl:jstl:1.2" />
+          <element id="library" level="project" name="Maven: org.glassfish:javax.faces:2.2.10" />
+          <element id="library" level="project" name="Maven: org.primefaces:primefaces:5.2.RC1" />
+        </element>
+      </element>
+    </root>
+  </artifact>
+</component>

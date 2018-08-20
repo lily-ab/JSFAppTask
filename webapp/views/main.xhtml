@@ -1,0 +1,20 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+<h:head></h:head>
+<h:body>
+    <h:form>
+        <p:panel>
+            <h:panelGrid columns="2">
+                <h:outputText value="Логин"/>
+                <h:inputText value="#{mainBean.user}"/>
+                <h:outputText value="Пароль"/>
+                <h:inputSecret value="#{mainBean.password}"/>
+            </h:panelGrid>
+            <h:commandButton value="Вход" action="#{mainBean.checkUser}"/>
+        </p:panel>
+    </h:form>
+</h:body>
+</html>
