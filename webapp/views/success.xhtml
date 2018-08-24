@@ -1,35 +1,48 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html  xmlns="http://www.w3.org/1999/xhtml"
-       xmlns:h="http://java.sun.com/jsf/html"
-       xmlns:p="http://primefaces.org/ui"
-       xmlns:f="http://java.sun.com/jsf/core">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui" xmlns:f="http://java.sun.com/jsf/core">
 <h:head></h:head>
 <h:body>
     <p:panel>
-        <h:outputText value="Добро пожаловать: #{mainBean.user}!">
+        <h:outputText value="Welcome: #{mainBean.user}!">
         </h:outputText>
     </p:panel>
-    <h:form>
-        <h:panelGrid columns="3" cellpadding="5">
-            <h:outputText value="Текст: "/>
-            <p:inputText value="#{mainBean.text}">
-                <p:ajax event="keyup" update="out1"/>
-            </p:inputText>
-            <h:outputText id="out1" value="#{mainBean.text}"/>
-        </h:panelGrid>
-    </h:form>
 
-    <h:dataTable value="#{pairBean.pairs}" var="p"
+    <p:panel>
+        <h:outputText value="Choose the pair of currencies you want to add to the table"/>
+        <h:form>
+            <h:selectOneMenu id="subscriptions" value="#{pairBean.curPairId}">
+                <f:ajax/>
+                <f:selectItems value="#{pairBean.allPairs}" var="k" itemLabel="#{k.name}" itemValue="#{k.id}"/>
+            </h:selectOneMenu>
+            <h:commandButton value="Add" actionListener="#{pairBean.addCurPair}"/>
+            <br/>
+        </h:form>
+    </p:panel>
+
+    <h:dataTable id="table" value="#{pairBean.pairs}" var="p"
                  headerClass="order-table-header"
                  rowClasses="order-table-odd-row,order-table-even-row"
+                 border="1"
+                 cellpadding="5"
     >
-        <h:column>
-            <!-- column header -->
-            <f:facet name="header">Pair</f:facet>
-            <!-- row record -->
-            #{p}
-        </h:column>
+        <h:form>
+            <h:column>
+                #{p.name}
+            </h:column>
+            <h:column>
+                #{p.price}
+            </h:column>
+        </h:form>
+
     </h:dataTable>
+
+    <h:form>
+        <p:poll interval="3" update="table"></p:poll>
+    </h:form>
+
 
 </h:body>
 </html>

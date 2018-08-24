@@ -8,9 +8,14 @@
           <element id="module-output" name="JSFAppTask" />
         </element>
         <element id="directory" name="lib">
-          <element id="library" level="project" name="Maven: jstl:jstl:1.2" />
           <element id="library" level="project" name="Maven: org.glassfish:javax.faces:2.2.10" />
           <element id="library" level="project" name="Maven: org.primefaces:primefaces:5.2.RC1" />
+          <element id="library" level="project" name="Maven: org.primefaces.themes:all-themes:1.0.10" />
+          <element id="library" level="project" name="Maven: org.json:json:20160810" />
+          <element id="library" level="project" name="Maven: org.apache.httpcomponents:httpcore:4.4.6" />
+          <element id="library" level="project" name="Maven: org.apache.httpcomponents:httpclient:4.5.3" />
+          <element id="library" level="project" name="Maven: commons-logging:commons-logging:1.2" />
+          <element id="library" level="project" name="Maven: commons-codec:commons-codec:1.9" />
         </element>
       </element>
     </root>
