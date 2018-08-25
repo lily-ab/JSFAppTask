@@ -17,32 +17,89 @@
                 <f:ajax/>
                 <f:selectItems value="#{pairBean.allPairs}" var="k" itemLabel="#{k.name}" itemValue="#{k.id}"/>
             </h:selectOneMenu>
-            <h:commandButton value="Add" actionListener="#{pairBean.addCurPair}"/>
+            <h:commandButton value="Add" actionListener="#{pairBean.addCurPair()}"/>
             <br/>
         </h:form>
+
+        <h:outputText value="Choose the number of columns"/>
+        <h:form>
+            <h:selectOneMenu value="#{pairBean.colNum}">
+                <f:ajax/>
+                <f:selectItem itemLabel="1" itemValue="1"/>
+                <f:selectItem itemLabel="2" itemValue="2"/>
+                <f:selectItem itemLabel="3" itemValue="3"/>
+            </h:selectOneMenu>
+            <h:commandButton value="Choose" actionListener="#{pairBean.splitPairs}"/>
+            <br/>
+        </h:form>
+        <!--<h:form>-->
+            <!--<h:selectOneRadio value="#{pairBean.colNum}">-->
+                <!--<f:selectItem itemValue="1" itemLabel="1" />-->
+                <!--<f:selectItem itemValue="2" itemLabel="2" />-->
+                <!--<f:selectItem itemValue="3" itemLabel="3" />-->
+            <!--</h:selectOneRadio>-->
+
+        <!--</h:form>-->
     </p:panel>
 
-    <h:dataTable id="table" value="#{pairBean.pairs}" var="p"
-                 headerClass="order-table-header"
-                 rowClasses="order-table-odd-row,order-table-even-row"
-                 border="1"
-                 cellpadding="5"
-    >
-        <h:form>
+    <p:panelGrid columns="3">
+        <h:dataTable id="table" value="#{pairBean.firstPairs}" var="p" rendered="#{not empty pairBean.firstPairs}"
+                     headerClass="order-table-header"
+                     rowClasses="order-table-odd-row,order-table-even-row"
+                     border="1"
+                     cellpadding="5"
+        >
+
             <h:column>
-                #{p.name}
+                <h:form>
+                    #{p.name}
+                    <h:commandButton value="x" actionListener="#{pairBean.deleteCurPair(p)}"/>
+                </h:form>
             </h:column>
             <h:column>
                 #{p.price}
             </h:column>
+        </h:dataTable>
+
+        <h:dataTable id="table2" value="#{pairBean.secondPirs}" var="p" rendered="#{not empty pairBean.secondPirs}"
+                     headerClass="order-table-header"
+                     rowClasses="order-table-odd-row,order-table-even-row"
+                     border="1"
+                     cellpadding="5"
+        >
+
+            <h:column>
+                <h:form>
+                    #{p.name}
+                    <h:commandButton value="x" actionListener="#{pairBean.deleteCurPair(p)}"/>
+                </h:form>
+            </h:column>
+            <h:column>
+                #{p.price}
+            </h:column>
+        </h:dataTable>
+        <h:dataTable id="table3" value="#{pairBean.thirdPairs}" var="p" rendered="#{not empty pairBean.thirdPairs}"
+                     headerClass="order-table-header"
+                     rowClasses="order-table-odd-row,order-table-even-row"
+                     border="1"
+                     cellpadding="5"
+        >
+
+            <h:column>
+                <h:form>
+                    #{p.name}
+                    <h:commandButton value="x" actionListener="#{pairBean.deleteCurPair(p)}"/>
+                </h:form>
+            </h:column>
+            <h:column>
+                #{p.price}
+            </h:column>
+        </h:dataTable>
+        <h:form>
+            <p:poll interval="1" update="table"></p:poll>
+            <p:poll interval="1" update="table2"></p:poll>
+            <p:poll interval="1" update="table3"></p:poll>
         </h:form>
-
-    </h:dataTable>
-
-    <h:form>
-        <p:poll interval="3" update="table"></p:poll>
-    </h:form>
-
-
+    </p:panelGrid>
 </h:body>
 </html>
