@@ -14,6 +14,7 @@ import java.net.URISyntaxException;
 public class PriceRequest {
 
     private static final String API_URL = "http://priceticker.exactpro.com/RestInstruments/json/price";
+
     private final HttpClient client = HttpClientBuilder.create().build();
 
     public String makePriceRequest(int id) throws IOException, URISyntaxException {

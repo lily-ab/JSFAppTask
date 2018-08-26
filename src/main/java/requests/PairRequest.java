@@ -5,7 +5,6 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-import com.sun.xml.internal.ws.policy.privateutil.PolicyUtils;
 import models.CurPair;
 import org.apache.http.HttpResponse;
 import org.apache.http.client.HttpClient;
@@ -20,18 +19,14 @@ public class PairRequest {
     private static final String API_URL = "http://priceticker.exactpro.com/RestInstruments/json/instrumentList";
     private final HttpClient client = HttpClientBuilder.create().build();
 
-    private List<CurPair> pairList;
-
-
-    public List<CurPair> getPairs() throws IOException {
+    private List<CurPair> getPairs() throws IOException {
         HttpGet get = new HttpGet(API_URL);
-        HttpResponse response = client.execute(get);/////
+        HttpResponse response = client.execute(get);
         String result = new BasicResponseHandler().handleResponse(response);
-        pairList = new ArrayList<CurPair>();
+        List<CurPair> pairList = new ArrayList<>();
 
         JSONObject postsObj = new JSONObject(result);
         JSONArray posts = postsObj.names();
-
 
         Iterator iter = postsObj.keys();
         JSONArray jsonArray = new JSONArray();

@@ -1,7 +1,6 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
         "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://java.sun.com/jsf/html"
+<html xmlns:h="http://java.sun.com/jsf/html"
       xmlns:p="http://primefaces.org/ui" xmlns:f="http://java.sun.com/jsf/core">
 <h:head></h:head>
 <h:body>
@@ -32,14 +31,7 @@
             <h:commandButton value="Choose" actionListener="#{pairBean.splitPairs}"/>
             <br/>
         </h:form>
-        <!--<h:form>-->
-            <!--<h:selectOneRadio value="#{pairBean.colNum}">-->
-                <!--<f:selectItem itemValue="1" itemLabel="1" />-->
-                <!--<f:selectItem itemValue="2" itemLabel="2" />-->
-                <!--<f:selectItem itemValue="3" itemLabel="3" />-->
-            <!--</h:selectOneRadio>-->
 
-        <!--</h:form>-->
     </p:panel>
 
     <p:panelGrid columns="3">
@@ -61,7 +53,7 @@
             </h:column>
         </h:dataTable>
 
-        <h:dataTable id="table2" value="#{pairBean.secondPirs}" var="p" rendered="#{not empty pairBean.secondPirs}"
+        <h:dataTable id="table2" value="#{pairBean.secondPairs}" var="p" rendered="#{not empty pairBean.secondPairs}"
                      headerClass="order-table-header"
                      rowClasses="order-table-odd-row,order-table-even-row"
                      border="1"
@@ -96,9 +88,9 @@
             </h:column>
         </h:dataTable>
         <h:form>
-            <p:poll interval="1" update="table"></p:poll>
-            <p:poll interval="1" update="table2"></p:poll>
-            <p:poll interval="1" update="table3"></p:poll>
+            <p:poll interval="1" update="table"/>
+            <p:poll interval="1" update="table2"/>
+            <p:poll interval="1" update="table3"/>
         </h:form>
     </p:panelGrid>
 </h:body>
